@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(Boost_USE_STATIC_LIBS        OFF) # only find static libs
 set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME     OFF)
-find_package(Boost 1.65.0 COMPONENTS system log log_setup thread date_time filesystem regex chrono atomic REQUIRED)
+find_package(Boost 1.65.0 REQUIRED COMPONENTS system)
 
 include_directories(${Boost_INCLUDE_DIRS})
 

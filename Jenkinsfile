@@ -5,7 +5,7 @@ pipeline {
         stage('CMake') {
             steps {
                 echo 'CMaking...'
-                cmake
+                cmake .
             }
         }
         stage('Make') {
