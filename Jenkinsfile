@@ -5,8 +5,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                cmake .
-                make
+                sh "cmake ."
+                sh "make"
             }
         }
         stage('Test') {
