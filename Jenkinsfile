@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                ./proxy
+                echo 'Testing..'
             }
         }
         stage('Deploy') {
