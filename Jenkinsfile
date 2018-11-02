@@ -2,16 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('CMake') {
+        stage('Build') {
             steps {
-                echo 'CMaking...'
+                echo 'Building..'
                 cmake .
+                make
             }
         }
-        stage('Make') {
+        stage('Test') {
             steps {
-                echo 'Making...'
-                make
+                ./proxy
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
