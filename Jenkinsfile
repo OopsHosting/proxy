@@ -2,19 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('CMake') {
             steps {
-                echo 'Building..'
+                echo 'CMaking...'
+                cmake
             }
         }
-        stage('Test') {
+        stage('Make') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                echo 'Making...'
+                make
             }
         }
     }
