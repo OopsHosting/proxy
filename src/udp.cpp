@@ -16,9 +16,7 @@
 
 #include "udp/udp_proxy.h"
 
-class UDPProxy {
-public:
-    static int setup(int argc, char* argv[])
+int udpProxy(int argc, char* argv[])
     {
 
         const unsigned short local_port   = static_cast<unsigned short>(::atoi(argv[2]));
@@ -44,4 +42,3 @@ public:
 
         return 0;
     }
-};

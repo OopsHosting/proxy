@@ -17,5 +17,7 @@ if(Boost_FOUND)
 
     add_executable(proxy ${SOURCES} ${HEADERS})
 
+    include_directories(src src/tcp src/udp)
+
     target_link_libraries(proxy ${Boost_LIBRARIES})
 endif()

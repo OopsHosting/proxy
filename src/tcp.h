@@ -7,7 +7,4 @@
 
 #endif //PROXY_TCP_H
 
-class TCPProxy {
-public:
-    static int setup(int argc, char *argv[]);
-};
+int tcpProxy(int argc, char *argv[]);
