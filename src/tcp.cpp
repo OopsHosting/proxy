@@ -7,6 +7,7 @@
 #include <iostream>
 #include <algorithm>
 #include <string>
+#include <cstring>
 
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
@@ -16,11 +17,11 @@
 
 #include "tcp/tcp_proxy.h"
 
-int tcpProxy(int argc, char* argv[])
+int tcpProxy(char* argv[])
 {
 
-    const unsigned short local_port   = static_cast<unsigned short>(::atoi(argv[2]));
-    const unsigned short forward_port = static_cast<unsigned short>(::atoi(argv[4]));
+    auto local_port   = static_cast<unsigned short>(std::strtoul(argv[2], nullptr, 0));
+    auto forward_port = static_cast<unsigned short>(std::strtoul(argv[4], nullptr, 0));
     const std::string local_host      = argv[1];
     const std::string forward_host    = argv[3];
 

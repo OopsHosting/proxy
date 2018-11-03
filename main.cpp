@@ -27,10 +27,10 @@ int main(int argc, char* argv[]) {
     const std::string protocol = argv[5];
 
     if(protocol == "udp") {
-        return udpProxy(argc, argv);
+        return udpProxy(argv);
     } else {
         if(protocol == "tcp") {
-            return tcpProxy(argc, argv);
+            return tcpProxy(argv);
         } else {
             std::cerr << "Please, set normal protocol: 'udp' or 'tcp' IN LOWER CASE" << std::endl;
             return 1;

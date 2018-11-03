@@ -16,11 +16,11 @@
 
 #include "udp/udp_proxy.h"
 
-int udpProxy(int argc, char* argv[])
+int udpProxy(char* argv[])
     {
 
-        const unsigned short local_port   = static_cast<unsigned short>(::atoi(argv[2]));
-        const unsigned short forward_port = static_cast<unsigned short>(::atoi(argv[4]));
+        auto local_port   = static_cast<unsigned short>(std::strtoul(argv[2], nullptr, 0));
+        auto forward_port = static_cast<unsigned short>(std::strtoul(argv[4], nullptr, 0));
         const std::string local_host      = argv[1];
         const std::string forward_host    = argv[3];
 
