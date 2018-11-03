@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 14)
 set(Boost_USE_STATIC_LIBS        OFF) # only find static libs
 set(Boost_USE_MULTITHREADED      ON)
 set(Boost_USE_STATIC_RUNTIME     OFF)
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
 find_package(Boost 1.65.0 REQUIRED COMPONENTS system)
 
 include_directories(${Boost_INCLUDE_DIRS})
@@ -20,4 +22,8 @@ if(Boost_FOUND)
     include_directories(src src/tcp src/udp)
 
     target_link_libraries(proxy ${Boost_LIBRARIES})
+endif()
+
+if(Threads_FOUND)
+    target_link_libraries (proxy Threads::Threads)
 endif()
