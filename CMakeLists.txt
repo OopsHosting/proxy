@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 PROJECT(proxy)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
 set(Boost_USE_STATIC_LIBS        OFF) # only find static libs
 set(Boost_USE_MULTITHREADED      ON)
@@ -16,6 +16,8 @@ if(Boost_FOUND)
     set(HEADERS src/tcp/tcp_proxy.h src/udp/udp_proxy.h src/tcp.h src/udp.h)
 
     add_executable(proxy ${SOURCES} ${HEADERS})
+
+    include_directories(src src/tcp src/udp)
 
     target_link_libraries(proxy ${Boost_LIBRARIES})
 endif()

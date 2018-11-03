@@ -7,4 +7,4 @@
 
 #endif //PROXY_UDP_H
 
-int udpProxy(int argc, char* argv[]);
+int udpProxy(int argc, char *argv[]);
