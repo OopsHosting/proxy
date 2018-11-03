@@ -2,7 +2,6 @@
 // Created by Паша Косило on 11/3/18.
 //
 
-#include "udp.h"
 #include <cstdlib>
 #include <cstddef>
 #include <iostream>
@@ -17,29 +16,32 @@
 
 #include "udp/udp_proxy.h"
 
-int udpProxy(int argc, char* argv[])
-{
-
-    const unsigned short local_port   = static_cast<unsigned short>(::atoi(argv[2]));
-    const unsigned short forward_port = static_cast<unsigned short>(::atoi(argv[4]));
-    const std::string local_host      = argv[1];
-    const std::string forward_host    = argv[3];
-
-    boost::asio::io_service ios;
-
-    try
+class UDPProxy {
+public:
+    static int setup(int argc, char* argv[])
     {
-        udp_proxy::m_udpProxyServer svrTest(ios,
-                                            local_host,local_port,
-                                            forward_host,forward_port);
 
-        ios.run();
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << "main : Error: " << e.what() << std::endl;
-        return 1;
-    }
+        const unsigned short local_port   = static_cast<unsigned short>(::atoi(argv[2]));
+        const unsigned short forward_port = static_cast<unsigned short>(::atoi(argv[4]));
+        const std::string local_host      = argv[1];
+        const std::string forward_host    = argv[3];
 
-    return 0;
-}
+        boost::asio::io_service ios;
+
+        try
+        {
+            udp_proxy::m_udpProxyServer svrTest(ios,
+                                                local_host,local_port,
+                                                forward_host,forward_port);
+
+            ios.run();
+        }
+        catch(std::exception& e)
+        {
+            std::cerr << "main : Error: " << e.what() << std::endl;
+            return 1;
+        }
+
+        return 0;
+    }
+};
