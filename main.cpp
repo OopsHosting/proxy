@@ -20,7 +20,9 @@
 int main(int argc, char* argv[]) {
     if (argc != 6)
     {
-        std::cerr << "usage: proxy <local host ip> <local port> <forward host ip> <forward port> <protocol: udp/tcp>" << std::endl;
+        std::cerr << "usage: proxy <local host ip> <local port> <forward host ip> <forward port> <protocol: udp/tcp>"
+                     "tcp: proxy 0.0.0.0 80 17.0.0.1 80 tcp"
+                     "udp: proxy 0.0.0.0 1935 17.0.0.1 1935 tcp" << std::endl;
         return 1;
     }
 
@@ -28,12 +30,11 @@ int main(int argc, char* argv[]) {
 
     if(protocol == "udp") {
         return udpProxy(argv);
+    } else if(protocol == "tcp") {
+        return tcpProxy(argv);
     } else {
-        if(protocol == "tcp") {
-            return tcpProxy(argv);
-        } else {
-            std::cerr << "Please, set normal protocol: 'udp' or 'tcp' IN LOWER CASE" << std::endl;
-            return 1;
-        }
+        std::cerr << "Please, set available protocol IN LOWER CASE" << std::endl;
+        return 1;
     }
+
 }
