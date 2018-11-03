@@ -11,6 +11,13 @@ find_package(Boost 1.65.0 REQUIRED COMPONENTS system)
 include_directories(${Boost_INCLUDE_DIRS})
 
 if(Boost_FOUND)
-    add_executable(proxy src/proxy.cpp src/tcp/tcp_proxy.cpp src/tcp/tcp_proxy.h src/udp/udp_proxy.cpp src/udp/udp_proxy.h)
+    set(SOURCES main.cpp src/tcp/tcp_proxy.cpp src/udp/udp_proxy.cpp src/tcp.cpp src/udp.cpp)
+
+    set(HEADERS src/tcp/tcp_proxy.h src/udp/udp_proxy.h src/tcp.h src/udp.h)
+
+    add_executable(proxy ${SOURCES} ${HEADERS})
+
+    include_directories(src src/tcp src/udp)
+
     target_link_libraries(proxy ${Boost_LIBRARIES})
 endif()
