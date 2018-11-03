@@ -7,4 +7,4 @@
 
 #endif //PROXY_TCP_H
 
-int tcpProxy(int argc, char *argv[]);
+int tcpProxy(char *argv[]);
